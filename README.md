@@ -12,11 +12,12 @@ FileViewer sample from griffon distribution adapted to use my selectable-filecho
 * rewind to tag "original" :
 
     cd FileViewer-with-selectable-filechooser
+
     git checkout original
 
 * install latest griffon (http://griffon.codehaus.org/Download or use gvmtool, http://gvmtool.net)
-+ note: on relatively recent un*x machine, I suggest you get gvm with 'curl -s get.gvmtool.net | bash', follow the instructions then do 'gvm install griffon'
-+ note: the plugin and the example have been made against griffon 1.1.0 : if your griffon is more recent, you will be asked to upgrade it; just follow the instructions and it should upgrade without problems.
+   + note: on relatively recent un*x machine, I suggest you get gvm with 'curl -s get.gvmtool.net | bash', follow the instructions then do 'gvm install griffon'
+   + note: the plugin and the example have been made against griffon 1.1.0 : if your griffon is more recent, you will be asked to upgrade it; just follow the instructions and it should upgrade without problems.
 
 * run the app :
 
@@ -24,13 +25,16 @@ FileViewer sample from griffon distribution adapted to use my selectable-filecho
 
 * open a file, notice how the open file dialog looks like and behave
 
-## Step 2 : install selectable-filechooser plugin (until the plugin finds its way to central repository, you will
-         have to build the plugin from the sources)
+## Step 2 : install selectable-filechooser plugin
+
+(until the plugin finds its way to central repository, you will have to build the plugin from the sources)
 
 * checkout sources of plugin in a sibling folder
 
     cd ..
+
     git clone https://github.com/marcpa00/selectable-filechooser
+
     cd selectable-filechooser
 
 * create the zip of plugin (it may ask you to upgrade if your griffon is newer than 1.1.0, do it with 'griffon upgrade'):
@@ -40,6 +44,7 @@ FileViewer sample from griffon distribution adapted to use my selectable-filecho
 * install the plugin in the sample
 
     cd ../FileViewer-with-selectable-filechooser
+
     griffon install-plugin ../selectable-filechooser/target/package/griffon-selectable-filechooser-0.1.zip
 
 * update the sample sources to latest on master branch
