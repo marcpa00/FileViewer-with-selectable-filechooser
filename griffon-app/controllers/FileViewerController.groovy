@@ -15,6 +15,7 @@
  */
 
 import javax.swing.JFileChooser
+import ca.marcpa.SelectableFileChooser
 
 /**
  * @author Danno Ferrin
@@ -31,11 +32,25 @@ class FileViewerController {
                 filesPane:view.filesPane, tabName:f.name)
     }
 
-    def browse = { evt = null ->
-    	def openResult = view.fileChooserWindow.showOpenDialog(view.fileViewerFrame)
+    // use a browse method taking a SelectableFileChooser instance to
+    // demonstrate the different filechooser variants
+    void browse(SelectableFileChooser fileChooser) {
+        def openResult = fileChooser.chooseFileToOpen()
     	if (JFileChooser.APPROVE_OPTION == openResult) {
-    		model.fileName = view.fileChooserWindow.selectedFile.toString()
+            model.fileName = fileChooser.selectedFile.toString()
     		view.textBinding.reverseUpdate()
     	}
+    }
+
+    def browseWithDefault = { evt = null ->
+        browse(view.defaultFileChooser)
+    }
+
+    def browseWithNative = { evt = null ->
+        browse(view.nativeFileChooser)
+    }
+
+    def browseWithPure = { evt = null ->
+        browse(view.pureJavaFileChooser)
     }
 }

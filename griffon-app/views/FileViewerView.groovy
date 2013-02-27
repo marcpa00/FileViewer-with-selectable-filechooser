@@ -18,9 +18,10 @@
  * @author Danno Ferrin
  */
 
+import ca.marcpa.SelectableFileChooser
+
 openAction = action(closure: controller.openFile, name:"Open")
 
-fileChooserWindow = fileChooser()
 fileViewerFrame = application(title:'File Viewer',
   size:[500,300],
   locationByPlatform:true,
@@ -32,8 +33,18 @@ fileViewerFrame = application(title:'File Viewer',
 	hbox(constraints:NORTH) {
         textField(columns:20, action:openAction,
             text: bind('fileName', target:model, id:'textBinding'))
-        button("...", actionPerformed:controller.browse)
+        vbox() {
+            button("browse...(default)", actionPerformed: controller.browseWithDefault)
+            button("browse...(native)",  actionPerformed: controller.browseWithNative)
+            button("browse...(pure-java)",   actionPerformed: controller.browseWithPure)
+        }
         button(openAction)
     }
     filesPane = tabbedPane(constraints:CENTER)
 }
+
+// NOTE: native SelectableFileChooser must be created after the application node
+defaultFileChooser = new ca.marcpa.SelectableFileChooser()
+nativeFileChooser = new ca.marcpa.SelectableFileChooser(useNativeDialog: true)
+pureJavaFileChooser = new ca.marcpa.SelectableFileChooser(useNativeDialog: false)
+
