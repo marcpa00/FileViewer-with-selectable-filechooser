@@ -28,9 +28,29 @@ FileViewer sample from griffon distribution adapted to use my selectable-filecho
 
 * open a file, notice how the open file dialog looks like and behave
 
-## Step 2 : install selectable-filechooser plugin
+## Step 2 : install selectable-filechooser plugin from Griffon Artifact Portal
 
-(until the plugin finds its way to central repository, you will have to build the plugin from the sources)
+* install the plugin in the sample
+
+       griffon install-plugin selectable-filechooser
+
+* update the sample sources to latest on master branch
+
+		git checkout master
+
+* run the modified application :
+
+	    griffon run-app
+
+* notice the different file choosers used by each selector button
+* look at the differences of subdirectory ```griffon-app``` between "original" and "HEAD" of master branch to see what have been modified in the sample sources to use selectable-filechooser.
+
+	    git diff original HEAD griffon-app
+
+
+## Step 2 (alternate method) : install selectable-filechooser plugin from sources
+
+Alternatively, you can get the plugin's sources and build it locally with griffon.
 
 * checkout sources of plugin in a sibling folder
 
